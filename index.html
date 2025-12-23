@@ -1,0 +1,260 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Career Explorer - AI-Powered Career Discovery</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="container">
+    <!-- Enhanced Header -->
+    <header class="hero">
+      <div class="hero-badge">✨ AI-Powered</div>
+      <h1 class="hero-title">
+        Discover Your Ideal Career Path
+      </h1>
+      <p class="hero-subtitle">
+        Answer a few questions about you, and let our AI find careers that match your interests - Just be yourself!
+      </p>
+
+    </header>
+    <!-- Progress Indicator -->
+    <div class="progress-container" id="progressContainer" style="display: none;">
+      <div class="progress-bar">
+        <div class="progress-fill" id="progressFill"></div>
+      </div>
+      <div class="progress-text" id="progressText">Loading AI model...</div>
+    </div>
+    <!-- Question Card -->
+    <section class="card main-card">
+      <div class="card-header">
+        <h2>Tell Us About Yourself</h2>
+      </div>
+
+      <form id="qaForm">
+        <div class="questions-grid">
+          <!-- Question 1 -->
+          <div class="question-card">
+            <div class="question-header">
+              <span class="question-icon">💭</span>
+              <label for="q1" class="question-title">What activities do you enjoy?</label>
+            </div>
+            <textarea 
+              id="q1" 
+              rows="3" 
+              class="question-input"
+              placeholder="Think about hobbies, school projects, or things you naturally gravitate towards. e.g., solving problems, helping people..."></textarea>
+          </div>
+
+          <!-- Question 2 -->
+          <div class="question-card">
+            <div class="question-header">
+              <span class="question-icon">📚</span>
+              <label for="q2" class="question-title">What subjects interest you?</label>
+            </div>
+            <textarea 
+              id="q2" 
+              rows="3" 
+              class="question-input"
+              placeholder="What topics do you find yourself reading or learning about?. e.g., math, science..."></textarea>
+          </div>
+
+          <!-- Question 3 -->
+          <div class="question-card">
+            <div class="question-header">
+              <span class="question-icon">🎯</span>
+              <label for="q3" class="question-title">What kind of work sounds appealing?</label>
+            </div>
+            <textarea 
+              id="q3" 
+              rows="3" 
+              class="question-input"
+              placeholder="What do you imagine yourself doing day-to-day?. e.g., building/fixing things, writing reports..."></textarea>
+          </div>
+
+          <!-- Question 4 -->
+          <div class="question-card">
+            <div class="question-header">
+              <span class="question-icon">🏢</span>
+              <label for="q4" class="question-title">What work environment suits you?</label>
+            </div>
+            <textarea 
+              id="q4" 
+              rows="3" 
+              class="question-input"
+              placeholder="Where and how do you work best?. e.g., quiet office, creative studio..."></textarea>
+          </div>
+        </div>
+
+        <!-- Preferences Section -->
+        <div class="preferences-section">
+          <div class="preferences-header">
+            <label class="question-title">What type of roles interest you? (Optional)</label>
+          </div>
+          <p class="preferences-subtitle">Select all that apply</p>
+          
+          <div class="preference-grid" id="preferenceGrid">
+            <!-- First 3 (Always visible) -->
+            <label class="preference-card">
+              <input type="checkbox" id="prefOffice"  />
+              <div class="preference-content">
+                <span class="preference-icon">💼</span>
+                <div class="preference-text">
+                  <div class="preference-title">Office / Professional</div>
+                  <div class="preference-desc">Analyst, Manager, Specialist, Consultant</div>
+                </div>
+              </div>
+            </label>
+
+            <label class="preference-card">
+              <input type="checkbox" id="prefHealthcare"  />
+              <div class="preference-content">
+                <span class="preference-icon">⚕️</span>
+                <div class="preference-text">
+                  <div class="preference-title">Healthcare / Medical</div>
+                  <div class="preference-desc">Doctors, nurses, therapists, medical staff</div>
+                </div>
+              </div>
+            </label>
+
+            <label class="preference-card">
+              <input type="checkbox" id="prefTech"  />
+              <div class="preference-content">
+                <span class="preference-icon">💻</span>
+                <div class="preference-text">
+                  <div class="preference-title">Tech / IT</div>
+                  <div class="preference-desc">Software, engineering, programming, IT</div>
+                </div>
+              </div>
+            </label>
+
+            <!-- Additional items (Hidden by default) -->
+            <div class="preference-more" id="preferenceMore">
+              <label class="preference-card">
+                <input type="checkbox" id="prefField"  />
+                <div class="preference-content">
+                  <span class="preference-icon">🚀</span>
+                  <div class="preference-text">
+                    <div class="preference-title">Field / Operational</div>
+                    <div class="preference-desc">On-site work, hands-on tasks, daily operations</div>
+                  </div>
+                </div>
+              </label>
+
+              <label class="preference-card">
+                <input type="checkbox" id="prefIndustrial"  />
+                <div class="preference-content">
+                  <span class="preference-icon">🔧</span>
+                  <div class="preference-text">
+                    <div class="preference-title">Industrial / Hands-on</div>
+                    <div class="preference-desc">Manufacturing, maintenance, technician</div>
+                  </div>
+                </div>
+              </label>
+
+              <label class="preference-card">
+                <input type="checkbox" id="prefMilitary"  />
+                <div class="preference-content">
+                  <span class="preference-icon">🎖️</span>
+                  <div class="preference-text">
+                    <div class="preference-title">Military / Defense</div>
+                    <div class="preference-desc">Armed forces, defense sector</div>
+                  </div>
+                </div>
+              </label>
+
+              <label class="preference-card">
+                <input type="checkbox" id="prefCreative"  />
+                <div class="preference-content">
+                  <span class="preference-icon">🎨</span>
+                  <div class="preference-text">
+                    <div class="preference-title">Creative / Arts</div>
+                    <div class="preference-desc">Design, art, media, entertainment</div>
+                  </div>
+                </div>
+              </label>
+
+              <label class="preference-card">
+                <input type="checkbox" id="prefEducation"  />
+                <div class="preference-content">
+                  <span class="preference-icon">📚</span>
+                  <div class="preference-text">
+                    <div class="preference-title">Education / Teaching</div>
+                    <div class="preference-desc">Teachers, professors, instructors, trainers</div>
+                  </div>
+                </div>
+              </label>
+
+              <label class="preference-card">
+                <input type="checkbox" id="prefBusiness"  />
+                <div class="preference-content">
+                  <span class="preference-icon">💰</span>
+                  <div class="preference-text">
+                    <div class="preference-title">Business / Finance</div>
+                    <div class="preference-desc">Accounting, finance, consulting, sales</div>
+                  </div>
+                </div>
+              </label>
+            </div>
+          </div>
+          
+          <!-- Show More Button -->
+          <button type="button" class="show-more-btn" id="showMoreBtn">
+            <span>Show More</span>
+            <span class="show-more-arrow">▼</span>
+          </button>
+        </div>
+
+
+        <!-- Submit Button -->
+        <div class="submit-section">
+          <button id="runBtn" type="submit" class="submit-btn">
+            <span class="btn-icon">🔍</span>
+            <span class="btn-text">Discover My Career Matches</span>
+          </button>
+        </div>
+      </form>
+    </section>
+
+    <!-- Results Section -->
+    <section class="card results-card" id="resultsCard" style="display: none;">
+      <div class="card-header">
+        <h2>Your Career Matches</h2>
+        <button id="exportBtn" class="export-btn" title="Export results">
+          <span>📥</span> Export
+        </button>
+      </div>
+      <div id="results" class="results"></div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer-bottom">
+        <small>Developed by Taif Alghamdi</small>
+      </div>
+    </footer>
+  </div>
+
+  <!-- Explanation Modal -->
+  <div id="explanationModal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 id="modalTitle">Career Explanation</h3>
+        <button class="modal-close" id="modalClose">&times;</button>
+      </div>
+      <div class="modal-body" id="modalBody">
+        <div class="loading-spinner">
+          <div class="spinner"></div>
+          <p>Generating explanation...</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>
