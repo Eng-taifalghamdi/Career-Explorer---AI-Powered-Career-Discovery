@@ -209,7 +209,25 @@
           </button>
         </div>
 
-
+        <!-- Advanced Options (Collapsible) -->
+        <details class="advanced-options">
+          <summary class="advanced-toggle">
+            <span>⚙️ Advanced Options</span>
+            <span class="toggle-arrow">▼</span>
+          </summary>
+          <div class="advanced-content">
+            <label class="option-inline">
+              <span>Results to show:</span>
+              <input id="topK" type="number" min="5" max="50" value="20" />
+            </label>
+            
+            <label class="option-inline">
+              <input type="checkbox" id="enableExplanations" checked />
+              <span>🤖 Generate AI explanations for top matches</span>
+            </label>
+          </div>
+        </details>
+        
         <!-- Submit Button -->
         <div class="submit-section">
           <button id="runBtn" type="submit" class="submit-btn">
@@ -257,4 +275,5 @@
 
   <script type="module" src="app.js"></script>
 </body>
+
 </html>
